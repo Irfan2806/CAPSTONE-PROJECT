@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions>
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="../xsd/PortRequest.xsd"/>
+            <xsd:import schemaLocation="../xsd/PortResponse.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="PortRequestMessage">
+        <wsdl:part
+                name="request"
+                element="req:PortRequest"/>
+    </wsdl:message>
+
+    <wsdl:message name="PortResponseMessage">
+        <wsdl:part
+                name="response"
+                element="res:PortResponse"/>
+    </wsdl:message>
+    
+    <wsdl:portType name="PortingServicePortType">
+    
+        <wsdl:operation name="submitPortRequest">
+
+            <wsdl:input message="tns:PortRequestMessage"/>
+
+            <wsdl:output message="tns:PortResponseMessage"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding
+            name="PortingServiceSoapBinding">
+
+        <soap:binding
+                style="document"
+                transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="submitPortRequest">
+            <soap:operation soapAction="submitPortRequest"/>
+
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="PortingService">
+
+        <wsdl:port
+                name="PortingServicePort"
+                binding="PortingServiceSoapBinding">
+
+            <soap:address
+                    location="http://localhost:8080/porting-service"/>
+        </wsdl:port>
+
+    </wsdl:service>
+</wsdl:definitions>

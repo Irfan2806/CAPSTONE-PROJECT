@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions>
+    
+    <wsdl:types>
+        <xsd:schema>
+            <xsd:import schemaLocation="../xsd/NotifyOperator.xsd"/>
+            <xsd:import schemaLocation="../xsd/NotifyAck.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="NotifyOperatorMessage">
+        <wsdl:part
+                name="request"
+                element="req:NotifyOperator"/>
+    </wsdl:message>
+
+    <wsdl:message name="NotifyAckMessage">
+        <wsdl:part
+                name="response"
+                element="res:NotifyAck"/>
+    </wsdl:message>
+
+    <wsdl:portType name="OperatorNotificationPortType">
+
+        <wsdl:operation name="notifyOperator">
+            <wsdl:input
+                    message="NotifyOperatorMessage"/>
+
+            <wsdl:output
+                    message="NotifyAckMessage"/>
+        </wsdl:operation>
+
+    </wsdl:portType>
+    
+    <wsdl:binding name="OperatorNotificationSoapBinding">
+
+        <soap:binding
+                style="document"
+                transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="notifyOperator">
+            <soap:operation
+                    soapAction="notifyOperator"/>
+
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="OperatorNotificationService">
+        <wsdl:port
+                name="OperatorNotificationPort"
+                binding="OperatorNotificationSoapBinding">
+
+            <soap:address
+                    location="http://localhost:8080/operator-notification-service"/>
+
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

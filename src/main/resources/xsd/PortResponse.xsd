@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+       
+    <xs:element name="PortResponse"/>
+    <xs:complexType name="PortResponseType">
+        <xs:sequence>
+        
+            <xs:element name="PORT_ID" type="xs:long"/>
+            <xs:element name="Status" type="xs:string"/>
+            <xs:element name="ResponseMessage" type="xs:string"/>
+            <xs:element name="ResponseTimestamp" type="xs:dateTime"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

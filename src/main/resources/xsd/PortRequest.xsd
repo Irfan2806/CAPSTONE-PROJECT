@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   
+    <xs:element name="PortRequest"/>
+
+    <xs:complexType name="PortRequestType">
+        <xs:sequence>
+        
+            <xs:element name="PORT_ID" type="PortRequestType"/>
+            <xs:element name="MobileNumber" type="xs:long"/>
+            <xs:element name="CustomerName" type="xs:string"/>
+            <xs:element name="CurrentOperatorCode" type="xs:int"/>
+            <xs:element name="RecipientOperatorCode" type="xs:int"/>
+            <xs:element name="RequestTimestamp"  type="xs:dateTime"/>
+        
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
